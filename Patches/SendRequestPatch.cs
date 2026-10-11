@@ -91,6 +91,9 @@ public class SendRequestPatch
                     Plugin.Log.LogInfo($"[HTTP] intercepted {host} -> {configuredServer.Authority}");
             }
 
+            if (AntiHilePatch.Handle(request))
+                return;
+
             if (debug)
                 LogResponseWhenDone(request);
         }
